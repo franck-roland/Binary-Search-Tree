@@ -133,28 +133,51 @@ void print_tree(node_t *node, unsigned int depth)
 {
     if(!node)
         return;
+    if(!depth){
+    printf("<html><head>\
+<style>\
+li{\
+	border: black 1px solid;\
+    margin: 10;\
+    padding:5 0 0 5;\
+}\
+.right{\
+	color: red;\
+}\
+.left {\
+	color: green;\
+}</style></head><body><div>");
+	}
     
-    printf("%d<ul><li class='right'>",node->value);
+    printf("%d<ul>",node->value);
     if(node->right)
     {
+    	printf("<li class='right'>");
         print_tree(node->right, depth + 1);
+        printf("</li>");
     }
-    else{
+    else if(node->left){
+	    printf("<li class='right'>");
         printf("None");
+        printf("</li>");
     }
-    printf("</li><li class='left'>");
+    
     if(node->left)
     {
+    	printf("</li><li class='left'>");
         print_tree(node->left, depth + 1);
-        
+        printf("</li>");
     }
-    else{
+    else if(node->right){
+    	printf("</li><li class='left'>");
         printf("None\n");
+        printf("</li>");
     }
-    printf("</li></ul>");
+	printf("</ul>");
 
-    if(!depth)
-        printf("\n");
+    if(!depth){
+        printf("</div><div><h1>Legends</h1><ul><li class='right'> right leaf </li><li class='left'> left leaf </li></ul></div></body></html>\n");
+    }
 }
 
 
