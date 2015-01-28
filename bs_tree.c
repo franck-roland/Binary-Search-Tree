@@ -160,7 +160,7 @@ void print_tree(node_t *node, unsigned int depth)
 
 
 
-
+#ifdef BS_TREE_TEST
 int main(int argc, char **argv)
 {
 	node_t *root = NULL;
@@ -182,7 +182,7 @@ int main(int argc, char **argv)
 	bs_free_tree(&root);
 	return 0;
 }
-
+#endif
 
 
 
