@@ -1,3 +1,10 @@
+//
+//  bs_tree.h
+//
+//
+//  Created by Franck Roland on 28/01/2015.
+//
+//
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -179,33 +186,5 @@ li{\
         printf("</div><div><h1>Legends</h1><ul><li class='right'> right leaf </li><li class='left'> left leaf </li></ul></div></body></html>\n");
     }
 }
-
-
-
-
-#ifdef BS_TREE_TEST
-int main(int argc, char **argv)
-{
-    node_t *root = NULL;
-    node_t *search_result = NULL;
-    
-    unsigned int tableau[] = {5,7,2,39,46,32,14, 38, 36, 6};
-    unsigned int i=0;
-   
-    for(i=0;i<sizeof(tableau)/sizeof(unsigned int);i++)
-    {
-       
-        bs_insert(&root, tableau[i], NULL);
-    }
-    
-    bs_tree_delete(root,7);
-    print_tree(root, 0);
-    search_result = bs_search(root,39);
-    
-    bs_free_tree(&root);
-    return 0;
-}
-#endif
-
 
 
